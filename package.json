@@ -1,6 +1,6 @@
 {
   "name": "n-calendar",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "calendar component",
   "main": "index.js",
   "scripts": {
