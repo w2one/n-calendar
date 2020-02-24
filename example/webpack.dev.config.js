@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
   entry: {
-    index: "./example/src/index.tsx"
+    index: "./example/src/index"
   },
   output: {
     filename: "[name].js",
@@ -13,40 +13,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts(x?)$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: "ts-loader"
-          }
-        ]
-      },
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader"
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              ident: "postcss",
-              plugins: [
-                require("postcss-preset-env")({
-                  flexbox: "no-2009"
-                }),
-                require("cssnano")({
-                  preset: "default"
-                })
-              ]
-            }
-          },
-          {
-            loader: "sass-loader"
+            loader: "babel-loader"
           }
         ]
       }
@@ -56,7 +27,7 @@ module.exports = {
     alias: {
       "@": path.resolve(__dirname, "../src/")
     },
-    extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".scss"]
+    extensions: [".js"]
   },
   plugins: [
     new HtmlWebpackPlugin({
